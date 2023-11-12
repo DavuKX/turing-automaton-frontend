@@ -1,3 +1,11 @@
 {
-  "title": "Simulador de Maquina de Turing"
+  "title": "Simulador de Maquina de Turing",
+  "word": "Ingresar palabra",
+  "run": "Correr máquina de turing",
+  "speed": "Velocidad de la máquina de turing",
+  "accept": "Palabra aceptada",
+  "reject": "Palabra rechazada",
+  "validate": "Validar palabra",
+  "validInput": "Ingrese una palabra válida.",
+  "validationHistory": "Historial de validaciones"
 }
