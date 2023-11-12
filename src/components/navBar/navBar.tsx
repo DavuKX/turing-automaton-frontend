@@ -8,11 +8,12 @@ import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import TranslateIcon from '@mui/icons-material/Translate';
+import {useTranslations} from "use-intl";
 
 export default function NavBar() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
     const isMenuOpen = Boolean(anchorEl);
+    const t = useTranslations()
 
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -23,7 +24,8 @@ export default function NavBar() {
     };
 
     const handleLanguageSelected = (language: 'es' | 'en' | 'pt') => {
-
+        setAnchorEl(null);
+        window.location.href = `/${language}`
     }
 
     const menuId = 'primary-search-account-menu';
@@ -59,7 +61,7 @@ export default function NavBar() {
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        {t('title')}
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

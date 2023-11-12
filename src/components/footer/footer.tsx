@@ -1,9 +1,12 @@
+'use client'
 import React from 'react';
 import Box from "@mui/material/Box";
 import {Container, Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import {useTranslations} from "use-intl";
 
 const Footer = () => {
+    const t = useTranslations()
     return (
         <Box
             sx={{
@@ -19,7 +22,7 @@ const Footer = () => {
                 <Grid container direction="column" alignItems="center">
                     <Grid item xs={12}>
                         <Typography color="black" variant="h5">
-                            Turing Automaton Simulator
+                            {t('title')}
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
