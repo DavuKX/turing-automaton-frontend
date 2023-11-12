@@ -6,7 +6,7 @@ export type turingMachine = {
     states: string[];
     alphabet: string[];
     transitions: {
-        [key: string]: TransitionTuring;
+        [char: string]: TransitionTuring;
     };
     initialState: string;
     acceptanceStates: string[];

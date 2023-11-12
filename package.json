@@ -15,9 +15,13 @@
     "@mui/material": "^5.14.17",
     "i18next": "^23.7.3",
     "next": "^14.0.2",
+    "next-client-cookies": "^1.0.6",
     "next-intl": "^2.22.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-cytoscapejs": "^2.0.0",
+    "react-dom": "^18",
+    "react-i18next": "^13.4.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
