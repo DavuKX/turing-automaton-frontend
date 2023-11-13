@@ -1,14 +1,14 @@
 import {List, ListItem, Typography} from "@mui/material";
 import React from "react";
 import {ValidationEntry} from "@/Interfaces/validationEntry";
-import {useTranslation} from "react-i18next";
+import {useTranslations} from "next-intl";
 
 interface ValidationHistoryProps {
     history: ValidationEntry[];
 }
 
 export function ValidationHistoryComponent({history}: ValidationHistoryProps) {
-    const {t} = useTranslation();
+    const t = useTranslations()
     return (
         <>
             <Typography fontSize={18} fontWeight={"bold"}>{t('validationHistory')}</Typography>

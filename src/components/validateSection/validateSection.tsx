@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Button} from '@mui/material';
-import {useTranslation} from 'react-i18next';
 import {validationResultType} from "@/types/validationResultType";
 import { useValidationLogic } from './validationLogic';
+import {useTranslations} from "use-intl";
 
 interface ValidateSectionProps {
     inputString: string;
@@ -10,7 +10,7 @@ interface ValidateSectionProps {
 }
 
 const ValidateSection: React.FC<ValidateSectionProps> = ({inputString, onFinishedValidation}) => {
-    const {t} = useTranslation();
+    const t = useTranslations()
     const [validInputMessageVisible, setValidInputMessageVisible] = useState(false);
     const { validateWord } = useValidationLogic();
 

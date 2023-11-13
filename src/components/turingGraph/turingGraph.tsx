@@ -5,8 +5,8 @@ import CytoscapeComponent from "react-cytoscapejs";
 import {layout, mainColor, secondaryColor, styleSheet} from "@/components/turingGraph/turingStyles";
 import {validationResultType} from "@/types/validationResultType";
 import {speak} from "@/components/validateSection/helpers";
-import {useTranslation} from "react-i18next";
 import Grid from "@mui/material/Grid";
+import {useTranslations} from 'next-intl';
 
 interface turingGraphProps {
     graphData: GraphData;
@@ -17,7 +17,7 @@ interface turingGraphProps {
 const turingGraph: React.FC<turingGraphProps> = ({graphData, validationResult, turingSpeed}) => {
     const graphRef = React.useRef<any>(null);
     const getValidationSpeed = () => 500 / (turingSpeed / 100);
-    const {t} = useTranslation();
+    const t = useTranslations()
 
     useEffect(() => {
         if (validationResult.word) {
