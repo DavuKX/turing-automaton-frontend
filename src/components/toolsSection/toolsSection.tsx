@@ -11,7 +11,6 @@ import {useTranslation} from 'react-i18next';
 import ValidateSection from "@/components/validateSection/validateSection";
 import {AutomatonTypes} from "@/types/automaton";
 import {validationResultType} from "@/types/validationResultType";
-import {useTranslations} from 'next-intl';
 
 interface ToolsSectionProps {
     onWordsChanged: (words: string) => void;
@@ -35,32 +34,34 @@ const ToolsSection: React.FC<ToolsSectionProps> = ({onWordsChanged, inputWords, 
         }
     };
 
-    const t = useTranslations()
+    const {t} = useTranslation();
 
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-            </Grid>
-            <Grid item xs={12}>
-                <TextField
-                    id="outlined-multiline-static"
-                    label={t("word")}
-                    defaultValue=""
-                    fullWidth
-                    minRows={1}
-                    maxRows={1}
-                    onChange={handleInputChange}
-                />
-            </Grid>
-            <Grid item xs={12}>
-                <Typography>{t("speed")}</Typography>
-                <Slider
-                    value={automatonSpeed}
-                    aria-label="Default"
-                    valueLabelDisplay="auto"
-                    min={10}
-                    onChange={(e: Event, newValue: number | number[]) => handleAutomatonSpeedChange(e, newValue)}
-                />
+                <Grid container direction="row" alignItems="center" spacing={2}>
+                    <Grid item xs={6}>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label={t("word")}
+                            defaultValue=""
+                            fullWidth
+                            minRows={1}
+                            maxRows={1}
+                            onChange={handleInputChange}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Typography>{t("speed")}</Typography>
+                        <Slider
+                            value={automatonSpeed}
+                            aria-label="Default"
+                            valueLabelDisplay="auto"
+                            min={10}
+                            onChange={(e: Event, newValue: number | number[]) => handleAutomatonSpeedChange(e, newValue)}
+                        />
+                    </Grid>
+                </Grid>
             </Grid>
             <Grid item xs={12}>
                 <ValidateSection
@@ -70,6 +71,7 @@ const ToolsSection: React.FC<ToolsSectionProps> = ({onWordsChanged, inputWords, 
             </Grid>
         </Grid>
     );
+    
 };
 
 export default ToolsSection;

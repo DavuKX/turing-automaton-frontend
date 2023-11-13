@@ -23,6 +23,7 @@
     "react-cytoscapejs": "^2.0.0",
     "react-dom": "^18",
     "react-i18next": "^13.4.0",
+    "react-responsive-carousel": "^3.2.23",
     "uuid": "^9.0.1"
   },
   "devDependencies": {

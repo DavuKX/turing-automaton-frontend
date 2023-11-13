@@ -11,12 +11,13 @@ import {useCookies} from 'next-client-cookies';
 import {ValidationEntry} from "@/Interfaces/validationEntry";
 import {Box, Paper} from "@mui/material";
 
+
 const automatonGraphData = {
     turing: turingMachineGraphData
 }
 
 export default function Home(){
-
+    const [tape, setTape] = useState(new Array(35).fill(' ')); 
     const [inputWords, setInputWords] = useState('');
     const [graphData, setGraphData] = useState(turingMachineGraphData);
     const [validationResult, setValidationResult] = useState<validationResultType>({
@@ -26,7 +27,6 @@ export default function Home(){
     const [automatonSpeed, setAutomatonSpeed] = useState<number[] | number>(50)
     const [validationHistory, setValidationHistory] = useState<ValidationEntry[]>([] as ValidationEntry[])
     const cookies = useCookies();
-
     useEffect(() => {
         if (!cookies.get('uuid')) {
             cookies.set('uuid', uuidv4())
@@ -38,9 +38,13 @@ export default function Home(){
     }, [])
 
     const handleWordsChange = (words: string): void => {
+        const newTape = [...tape];
+        for (let i = 0; i < words.length && i < newTape.length; i++) {
+          newTape[i] = words[i];
+        }
+        setTape(newTape);
         setInputWords(words);
     };
-
     const handleFinishedValidation = (validationResult: validationResultType) => {
         setValidationResult(validationResult)
         loadValidations().then(r => r)
@@ -63,46 +67,44 @@ export default function Home(){
     return (
         <Box
             sx={{
-                overflow: 'hidden',
+                overflow: 'auto',
                 backgroundColor: '#f5f5f5',
                 padding: '10px',
                 height: 'calc(100vh - 130px)',
+                spacing: 2
             }}
         >
-            <Grid
-                container
-                direction="row"
-                justifyContent="space-around"
-                spacing={2}
-                height="100%"
-            >
-                <Grid item md={4} height="100%">
-                    <Paper className="p-4 h-full">
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <ToolsSection
-                                    onWordsChanged={handleWordsChange}
-                                    inputWords={inputWords}
-                                    onFinishedValidation={handleFinishedValidation}
-                                    onAutomatonSpeedChanged={setAutomatonSpeed}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <ValidationHistoryComponent history={validationHistory}/>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>
-                <Grid item md={8} height="100%">
-                    <Paper className="p-4 h-full">
-                        <AutomatonGraph
-                            graphData={graphData}
-                            validationResult={validationResult}
-                            turingSpeed={Number(automatonSpeed)}
-                        />
-                    </Paper>
-                </Grid>
+            <Grid item xs={12} md={6} height="50%">
+                <Paper className="p-4 h-full" sx={{ borderRadius: 0}}>
+                    <AutomatonGraph
+                        graphData={graphData}
+                        validationResult={validationResult}
+                        turingSpeed={Number(automatonSpeed)}
+                    />
+                </Paper>
             </Grid>
+            <Grid item xs={12} md={6} height="50%">
+                <Paper className="p-4 h-full"  sx={{ borderRadius: 0 }}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <ToolsSection
+                                onWordsChanged={handleWordsChange}
+                                inputWords={inputWords}
+                                onFinishedValidation={handleFinishedValidation}
+                                onAutomatonSpeedChanged={setAutomatonSpeed}
+                            />
+                        </Grid>
+                        {/* <Grid item xs={12}>
+                            <Tape tape={tape} /> 
+                        </Grid> */}
+                    </Grid>
+                </Paper>
+            </Grid>
+            <Paper className="p-4 mt-4 h-auto">
+                <Grid item xs={12}>
+                    <ValidationHistoryComponent history={validationHistory}/>
+                </Grid>
+            </Paper>
         </Box>
-    );
+    );        
 }

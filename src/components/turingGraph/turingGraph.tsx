@@ -83,10 +83,10 @@ const turingGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
 
 
     return (
-        <Grid container>
+        <Grid container style={{width: "100%", height: "100%"}}>
             <CytoscapeComponent
                 elements={CytoscapeComponent.normalizeElements(graphData)}
-                style={{width: "100%", height: "600px"}}
+                style={{width: "100%", height: "100%"}}
                 zoomingEnabled={true}
                 maxZoom={3}
                 minZoom={0.1}
@@ -99,7 +99,7 @@ const turingGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
                 }}
             />
         </Grid>
-    );
+    );    
 };
 
 export default turingGraph;

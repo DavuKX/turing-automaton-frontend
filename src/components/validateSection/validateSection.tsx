@@ -3,6 +3,10 @@ import {Button} from '@mui/material';
 import {validationResultType} from "@/types/validationResultType";
 import { useValidationLogic } from './validationLogic';
 import {useTranslations} from "use-intl";
+import PlayIcon from '@mui/icons-material/PlayArrow';
+import SkipNext from '@mui/icons-material/SkipNext';
+import FastRewind from '@mui/icons-material/FastRewind';
+import Grid from "@mui/material/Grid";
 
 interface ValidateSectionProps {
     inputString: string;
@@ -25,15 +29,28 @@ const ValidateSection: React.FC<ValidateSectionProps> = ({inputString, onFinishe
     };
 
     return (
-        <>
-            <div>
+        <Grid container direction="row" justifyContent="center" spacing={2}>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={1}>
                 <Button variant="outlined" fullWidth onClick={handleValidate}>
-                    {t('validate')}
+                    <FastRewind />
                 </Button>
-                {validInputMessageVisible && <div>{t('validInput')}</div>}
-            </div>
-        </>
+            </Grid>
+            <Grid item xs={1}>
+                <Button variant="outlined" fullWidth onClick={handleValidate}>
+                    <SkipNext />
+                </Button>
+            </Grid>
+            <Grid item xs={1}>
+                <Button variant="outlined" fullWidth onClick={handleValidate}>
+                    <PlayIcon />
+                </Button>
+            </Grid>
+            <Grid item xs={2}></Grid>
+            {validInputMessageVisible && <div>{t('validInput')}</div>}
+        </Grid>
     );
+        
 };
 
 export default ValidateSection;

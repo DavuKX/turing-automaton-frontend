@@ -2,7 +2,7 @@
   "title": "Turing Machine Simulator",
   "word": "Enter a word",
   "run": "Run Turing Machine",
-  "speed": "Turing Machine Speed",
+  "speed": "Speed",
   "accept": "Word accepted",
   "reject": "Word rejected",
   "validate": "Validate word",

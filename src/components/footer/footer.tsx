@@ -13,18 +13,13 @@ const Footer = () => {
                 width: "100%",
                 height: "auto",
                 paddingTop: "1rem",
-                paddingBottom: "1rem",
+                maeginbottom: "1rem",
                 bottom: 0,
-                position: "absolute",
+                position: "fixed",
             }}
         >
             <Container maxWidth="lg">
-                <Grid container direction="column" alignItems="center">
-                    <Grid item xs={12}>
-                        <Typography color="black" variant="h5">
-                            {t('title')}
-                        </Typography>
-                    </Grid>
+                <Grid container direction="column" alignItems="center" bgcolor="white" justifyContent="center">
                     <Grid item xs={12}>
                         <Typography color="textSecondary" variant="subtitle1">
                             {`${new Date().getFullYear()} | Duvan Navarro | Dania Sarmiento | Anuarth Rincon`}

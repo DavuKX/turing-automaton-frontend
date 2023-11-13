@@ -2,7 +2,7 @@
   "title": "Simulador de Maquina de Turing",
   "word": "Ingresar palabra",
   "run": "Correr máquina de turing",
-  "speed": "Velocidad de la Máquina de Turing",
+  "speed": "Velocidad",
   "accept": "Palabra aceptada",
   "reject": "Palabra rechazada",
   "validate": "Validar palabra",
