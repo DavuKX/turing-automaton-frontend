@@ -5,7 +5,9 @@ type SquareProps = {
 };
 
 const Square: React.FC<SquareProps> = ({ letter }) => (
-  <div className="square">{letter}</div>
+  <div className="square" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50px', width: '50px', border: '1px solid black' }}>
+    {letter}
+  </div>
 );
 
 export default Square;

@@ -10,7 +10,8 @@ import {v4 as uuidv4} from 'uuid';
 import {useCookies} from 'next-client-cookies';
 import {ValidationEntry} from "@/Interfaces/validationEntry";
 import {Box, Paper} from "@mui/material";
-
+import Tape from "@/components/validateSection/tape";
+import ValidateSection from "@/components/validateSection/validateSection";
 
 const automatonGraphData = {
     turing: turingMachineGraphData
@@ -94,9 +95,15 @@ export default function Home(){
                                 onAutomatonSpeedChanged={setAutomatonSpeed}
                             />
                         </Grid>
-                        {/* <Grid item xs={12}>
+                        <Grid item xs={12}>
                             <Tape tape={tape} /> 
-                        </Grid> */}
+                        </Grid>
+                        <Grid item xs={12}>
+                        <ValidateSection
+                            inputString={inputWords.toLowerCase()}
+                            onFinishedValidation={handleFinishedValidation} // Corregir aquí
+                        />
+                        </Grid>
                     </Grid>
                 </Paper>
             </Grid>
