@@ -7,5 +7,5 @@
   "reject": "Word rejected",
   "validate": "Validate word",
   "validInput": "Enter a valid word",
-  "validationHistory": "Validation history"
+  "validationHistory": "Word history"
 }

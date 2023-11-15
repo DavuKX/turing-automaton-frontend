@@ -7,5 +7,5 @@
   "reject": "Palabra rechazada",
   "validate": "Validar palabra",
   "validInput": "Ingrese una palabra válida.",
-  "validationHistory": "Historial de validaciones"
+  "validationHistory": "Historial de palabras"
 }
