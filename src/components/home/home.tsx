@@ -10,6 +10,8 @@ import {v4 as uuidv4} from 'uuid';
 import {useCookies} from 'next-client-cookies';
 import {ValidationEntry} from "@/Interfaces/validationEntry";
 import {Box, Paper} from "@mui/material";
+import Tape from "@/components/validateSection/tape/tape";
+import ValidateSection from "@/components/validateSection/validateSection";
 
 
 const automatonGraphData = {
@@ -113,7 +115,7 @@ export default function Home(){
                         <Grid item xs={12}>
                         <ValidateSection
                             inputString={inputWords.toLowerCase()}
-                            onFinishedValidation={handleFinishedValidation} // Corregir aquí
+                            onFinishedValidation={handleFinishedValidation}
                         />
                         </Grid>
                     </Grid>
