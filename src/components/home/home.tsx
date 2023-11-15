@@ -110,9 +110,6 @@ export default function Home(){
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <Tape tape={tape} />
-                        </Grid>
-                        <Grid item xs={12}>
                         <ValidateSection
                             inputString={inputWords.toLowerCase()}
                             onFinishedValidation={handleFinishedValidation}

@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 // @ts-ignore
 import CytoscapeComponent from "react-cytoscapejs";
 import {layout, mainColor, secondaryColor, styleSheet} from "@/components/turingGraph/turingStyles";
-import {validationResultType} from "@/types/validationResultType";
+import {StateType, validationResultType} from "@/types/validationResultType";
 import {speak} from "@/components/validateSection/helpers";
 import Grid from "@mui/material/Grid";
 import {useTranslations} from 'next-intl';
@@ -18,6 +18,7 @@ const TuringGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
     const graphRef = React.useRef<any>(null);
     const getValidationSpeed = () => 500 / (turingSpeed / 100);
     const t = useTranslations()
+    const [tape, setTape] = React.useState<StateType | null>();
 
     useEffect(() => {
         if (validationResult.word) {
@@ -28,6 +29,7 @@ const TuringGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
                 for (const state of validationResult.path) {
                     applyStylesToNodes(nodes, state.initial_state, state.next_state);
                     applyStylesToEdges(edges, state.initial_state, state.next_state, state.edge_label);
+                    setTape(state)
 
                     await new Promise((resolve) => {
                         setTimeout(resolve, getValidationSpeed());
@@ -83,7 +85,7 @@ const TuringGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
 
 
     return (
-        <Grid container style={{width: "100%", height: "100%"}}>
+        <Grid container style={{width: "100%", height: "100%", alignItems: "center", display: "flex", alignContent: "center"}}>
             <CytoscapeComponent
                 elements={CytoscapeComponent.normalizeElements(graphData)}
                 style={{width: "100%", height: "100%"}}
@@ -98,6 +100,31 @@ const TuringGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
                     graphRef.current = cy;
                 }}
             />
+            <Grid>
+                {tape && (
+                    <ul style={{ listStyleType: "none", padding: 0, margin: 0, display: "flex" }}>
+                        {tape.tape.map((char, index) => (
+                            <li
+                                key={index}
+                                style={{
+                                    display: "inline-block",
+                                    width: "40px",
+                                    height: "40px",
+                                    border: "1px solid black",
+                                    borderColor: index === tape.current_symbol_index ? "red" : "black",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    textAlign: "center",
+                                    lineHeight: "40px",
+                                    margin: "5px"
+                                }}
+                            >
+                                {char}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </Grid>
         </Grid>
     );    
 };

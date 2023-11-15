@@ -63,12 +63,6 @@ const ToolsSection: React.FC<ToolsSectionProps> = ({onWordsChanged, inputWords, 
                     </Grid>
                 </Grid>
             </Grid>
-            {/* <Grid item xs={12}>
-                <ValidateSection
-                    inputString={inputWords.toLowerCase()}
-                    onFinishedValidation={onFinishedValidation}
-                />
-            </Grid> */}
         </Grid>
     );
     

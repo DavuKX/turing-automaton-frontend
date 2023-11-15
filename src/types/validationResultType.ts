@@ -1,7 +1,7 @@
 export type StateType = {
     initial_state: string;
     next_state: string;
-    tape: string;
+    tape: string[];
     current_symbol_index: number;
     symbol: string;
     edge_label: string;
