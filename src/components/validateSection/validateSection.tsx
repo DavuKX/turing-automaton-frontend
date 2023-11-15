@@ -7,6 +7,7 @@ import PlayIcon from '@mui/icons-material/PlayArrow';
 import SkipNext from '@mui/icons-material/SkipNext';
 import FastRewind from '@mui/icons-material/FastRewind';
 import Grid from "@mui/material/Grid";
+import { speak } from './helpers';
 
 interface ValidateSectionProps {
     inputString: string;
@@ -19,12 +20,13 @@ const ValidateSection: React.FC<ValidateSectionProps> = ({inputString, onFinishe
     const { validateWord } = useValidationLogic();
 
     const handleValidate = async () => {
-        if (inputString && inputString.length > 0) {
+        if (inputString && inputString.length > 0 && /^[ab]+$/.test(inputString)) {
             setValidInputMessageVisible(false);
             const validationResult = await validateWord(inputString);
             onFinishedValidation(validationResult);
         } else {
             setValidInputMessageVisible(true);
+            speak(t('reject'));
         }
     };
 
@@ -34,6 +36,11 @@ const ValidateSection: React.FC<ValidateSectionProps> = ({inputString, onFinishe
             <Grid item xs={1}>
                 <Button variant="outlined" fullWidth onClick={handleValidate}>
                     <PlayIcon />
+                </Button>
+            </Grid>
+            <Grid item xs={1}>
+                <Button variant="outlined" fullWidth onClick={handleValidate}>
+                    <SkipNext />
                 </Button>
             </Grid>
             <Grid item xs={2}></Grid>
