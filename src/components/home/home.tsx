@@ -39,13 +39,20 @@ export default function Home(){
     }, [])
 
     const handleWordsChange = (words: string): void => {
-        const newTape = [...tape];
-        for (let i = 0; i < words.length && i < newTape.length; i++) {
-          newTape[i] = words[i];
+        const currentWordLength = words.length;
+        const defaultTapeLength = 40;
+        const newTapeLength = Math.max(currentWordLength, defaultTapeLength);
+        const newTape = Array(newTapeLength).fill('');
+        const startIndex = Math.floor((newTapeLength - currentWordLength) / 2);
+
+        for (let i = 0; i < currentWordLength; i++) {
+          newTape[startIndex + i] = words[i];
         }
+        
         setTape(newTape);
         setInputWords(words);
-    };
+      };
+
     const handleFinishedValidation = (validationResult: validationResultType) => {
         setValidationResult(validationResult)
         loadValidations().then(r => r)

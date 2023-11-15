@@ -25,6 +25,7 @@
     width: fit-content;
     margin-bottom: 20px;
     position: relative; /* Agregamos posición relativa para el contenido */
+    justify-content: center; /* Centra los cuadrados */
   }
   
   .square {
@@ -39,12 +40,12 @@
   /* Estilos para el cuadrado superpuesto */
   .overlaid-div {
     position: absolute;
-    width: 60px; 
-    height: 60px; 
+    width: 55px; 
+    height: 55px; 
     border: solid 2px; 
     border-color: #1976D2;
     left: 50%;
-    top: 50%;
+    top: 37%;
     transform: translate(-50%, -50%);
     z-index: 1;
   }

@@ -7,10 +7,10 @@ import {
     Typography
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import {useTranslation} from 'react-i18next';
 import ValidateSection from "@/components/validateSection/validateSection";
 //import {AutomatonTypes} from "@/types/automaton";
 import {validationResultType} from "@/types/validationResultType";
+import { useTranslations } from 'next-intl';
 
 interface ToolsSectionProps {
     onWordsChanged: (words: string) => void;
@@ -34,7 +34,7 @@ const ToolsSection: React.FC<ToolsSectionProps> = ({onWordsChanged, inputWords, 
         }
     };
 
-    const {t} = useTranslation();
+    const t = useTranslations();
 
     return (
         <Grid container spacing={2}>

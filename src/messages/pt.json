@@ -1,7 +1,7 @@
 {
   "title": "Simulador de Máquina de Turing",
   "word": "Digite a palavra",
-  "run": "EXECUTAR AUTÔMATO",
+  "run": "Executar Máquina de Turing",
   "speed": "Velocidade",
   "accept": "Palavra aceita",
   "reject": "Palavra rejeitada",
