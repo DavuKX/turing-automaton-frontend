@@ -14,7 +14,7 @@ interface turingGraphProps {
     turingSpeed: number;
 }
 
-const turingGraph: React.FC<turingGraphProps> = ({graphData, validationResult, turingSpeed}) => {
+const TuringGraph: React.FC<turingGraphProps> = ({graphData, validationResult, turingSpeed}) => {
     const graphRef = React.useRef<any>(null);
     const getValidationSpeed = () => 500 / (turingSpeed / 100);
     const t = useTranslations()
@@ -102,4 +102,4 @@ const turingGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
     );    
 };
 
-export default turingGraph;
+export default TuringGraph;
