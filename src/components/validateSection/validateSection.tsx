@@ -34,17 +34,12 @@ const ValidateSection: React.FC<ValidateSectionProps> = ({inputString, onFinishe
             <Grid item xs={2}></Grid>
             <Grid item xs={1}>
                 <Button variant="outlined" fullWidth onClick={handleValidate}>
-                    <FastRewind />
+                    <PlayIcon />
                 </Button>
             </Grid>
             <Grid item xs={1}>
                 <Button variant="outlined" fullWidth onClick={handleValidate}>
                     <SkipNext />
-                </Button>
-            </Grid>
-            <Grid item xs={1}>
-                <Button variant="outlined" fullWidth onClick={handleValidate}>
-                    <PlayIcon />
                 </Button>
             </Grid>
             <Grid item xs={2}></Grid>
