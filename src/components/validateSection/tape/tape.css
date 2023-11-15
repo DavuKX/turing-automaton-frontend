@@ -1,5 +1,3 @@
-/* tape.css */
-
 .tape {
     position: relative;
     overflow-x: auto;
@@ -24,8 +22,8 @@
     flex-direction: row;
     width: fit-content;
     margin-bottom: 20px;
-    position: relative; /* Agregamos posición relativa para el contenido */
-    justify-content: center; /* Centra los cuadrados */
+    position: relative;
+    justify-content: center; 
   }
   
   .square {
@@ -37,7 +35,6 @@
     border: 1px solid rgb(154, 152, 152);
   }
   
-  /* Estilos para el cuadrado superpuesto */
   .overlaid-div {
     position: absolute;
     width: 55px; 

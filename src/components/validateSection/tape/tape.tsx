@@ -23,9 +23,6 @@ const Tape: React.FC<TapeProps> = ({ tape }) => {
           <Square key={index} letter={letter} />
         ))}
       </div>
-      {/* <div className="overlaid-container">
-        <div className="overlaid-div"></div>
-      </div> */}
     </div>
   );
 };

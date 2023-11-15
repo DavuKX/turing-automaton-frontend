@@ -19,7 +19,16 @@ const TuringGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
     const getValidationSpeed = () => 500 / (turingSpeed / 100);
     const t = useTranslations()
     const [tape, setTape] = React.useState<StateType | null>();
-
+    const getTapeWithEmptySpaces = (tape: StateType | null): string[] => {
+        const emptyTapeLength = 10;
+        const emptySpaces = Array(emptyTapeLength).fill(' ');
+        if (tape) {
+            const tapeWithEmptySpaces = emptySpaces.concat(tape.tape, emptySpaces);
+            return tapeWithEmptySpaces;
+        }
+        return emptySpaces.concat(Array(20).fill(' '));
+    };
+    
     useEffect(() => {
         if (validationResult.word) {
             const nodes = graphRef.current.nodes();
@@ -103,7 +112,7 @@ const TuringGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
             <Grid>
                 {tape && (
                     <ul style={{ listStyleType: "none", padding: 0, margin: 0, display: "flex" }}>
-                        {tape.tape.map((char, index) => (
+                        {getTapeWithEmptySpaces(tape).map((char, index) => (
                             <li
                                 key={index}
                                 style={{
@@ -111,7 +120,7 @@ const TuringGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
                                     width: "40px",
                                     height: "40px",
                                     border: "1px solid black",
-                                    borderColor: index === tape.current_symbol_index ? "red" : "black",
+                                    borderColor: index === tape.current_symbol_index + 10 ? "red" : "black",
                                     justifyContent: "center",
                                     alignItems: "center",
                                     textAlign: "center",
