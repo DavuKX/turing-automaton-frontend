@@ -53,33 +53,37 @@ export default function NavBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" color="transparent">
-                <Toolbar>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                    >
-                        {t('title')}
-                    </Typography>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="translations"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
-                            <TranslateIcon />
-                        </IconButton>
-                    </Box>
-                </Toolbar>
-            </AppBar>
-            {renderMenu}
+          <AppBar position="static" color="transparent" sx={{ backgroundColor: '#C0E0FF' }}>
+            <Toolbar>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{
+                  display: { xs: 'none', sm: 'block' },
+                  color: 'black'
+                }}
+              >
+                {t('title')}
+              </Typography>
+              <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="translations"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                  sx={{ color: 'black' }} 
+                >
+                  <TranslateIcon />
+                </IconButton>
+              </Box>
+            </Toolbar>
+          </AppBar>
+          {renderMenu}
         </Box>
     );
 }

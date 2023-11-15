@@ -10,7 +10,7 @@ import {v4 as uuidv4} from 'uuid';
 import {useCookies} from 'next-client-cookies';
 import {ValidationEntry} from "@/Interfaces/validationEntry";
 import {Box, Paper} from "@mui/material";
-import Tape from "@/components/validateSection/tape";
+import Tape from "@/components/validateSection/tape/tape";
 import ValidateSection from "@/components/validateSection/validateSection";
 
 const automatonGraphData = {
@@ -18,7 +18,7 @@ const automatonGraphData = {
 }
 
 export default function Home(){
-    const [tape, setTape] = useState(new Array(35).fill(' ')); 
+    const [tape, setTape] = useState(new Array(40).fill(' ')); 
     const [inputWords, setInputWords] = useState('');
     const [graphData, setGraphData] = useState(turingMachineGraphData);
     const [validationResult, setValidationResult] = useState<validationResultType>({
