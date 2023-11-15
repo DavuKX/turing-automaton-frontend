@@ -1,0 +1,52 @@
+/* tape.css */
+
+.tape {
+    position: relative;
+    overflow-x: auto;
+    width: 100%; 
+    scrollbar-width: thin;
+    scrollbar-color: #1976D2 transparent; 
+  }
+  
+  .tape::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  
+  .tape::-webkit-scrollbar-thumb {
+    background-color: #1976D2;
+    border-radius: 7px;
+    width: 50%;
+  }
+  
+  .tape-content {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin-bottom: 20px;
+    position: relative; /* Agregamos posición relativa para el contenido */
+    justify-content: center; /* Centra los cuadrados */
+  }
+  
+  .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border: 1px solid rgb(154, 152, 152);
+  }
+  
+  /* Estilos para el cuadrado superpuesto */
+  .overlaid-div {
+    position: absolute;
+    width: 55px; 
+    height: 55px; 
+    border: solid 2px; 
+    border-color: #1976D2;
+    left: 50%;
+    top: 37%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  

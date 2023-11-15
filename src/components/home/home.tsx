@@ -17,7 +17,7 @@ const automatonGraphData = {
 }
 
 export default function Home(){
-    const [tape, setTape] = useState(new Array(35).fill(' ')); 
+    const [tape, setTape] = useState(new Array(40).fill(' '));
     const [inputWords, setInputWords] = useState('');
     const [graphData, setGraphData] = useState(turingMachineGraphData);
     const [validationResult, setValidationResult] = useState<validationResultType>({
@@ -43,13 +43,20 @@ export default function Home(){
     }, [])
 
     const handleWordsChange = (words: string): void => {
-        const newTape = [...tape];
-        for (let i = 0; i < words.length && i < newTape.length; i++) {
-          newTape[i] = words[i];
+        const currentWordLength = words.length;
+        const defaultTapeLength = 40;
+        const newTapeLength = Math.max(currentWordLength, defaultTapeLength);
+        const newTape = Array(newTapeLength).fill('');
+        const startIndex = Math.floor((newTapeLength - currentWordLength) / 2);
+
+        for (let i = 0; i < currentWordLength; i++) {
+          newTape[startIndex + i] = words[i];
         }
+
         setTape(newTape);
         setInputWords(words);
-    };
+      };
+
     const handleFinishedValidation = (validationResult: validationResultType) => {
         setValidationResult(validationResult)
         loadValidations().then(r => r)
@@ -99,6 +106,15 @@ export default function Home(){
                                 onFinishedValidation={handleFinishedValidation}
                                 onAutomatonSpeedChanged={setAutomatonSpeed}
                             />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Tape tape={tape} />
+                        </Grid>
+                        <Grid item xs={12}>
+                        <ValidateSection
+                            inputString={inputWords.toLowerCase()}
+                            onFinishedValidation={handleFinishedValidation} // Corregir aquí
+                        />
                         </Grid>
                     </Grid>
                 </Paper>

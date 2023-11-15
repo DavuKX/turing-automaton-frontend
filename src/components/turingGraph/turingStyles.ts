@@ -46,7 +46,7 @@ export const styleSheet = [
     {
         selector: "node#start",
         style: {
-            "background-color": "#d9ff8d",
+            "background-color": "#C0E0FF",
         }
     },
 ];
