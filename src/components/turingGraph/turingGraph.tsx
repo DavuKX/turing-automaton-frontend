@@ -25,9 +25,9 @@ const turingGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
             const edges = graphRef.current.edges();
 
             const applyStylesWithDelay = async () => {
-                for (const state of validationResult.states) {
-                    applyStylesToNodes(nodes, state.initial_state, state.final_state);
-                    applyStylesToEdges(edges, state.initial_state, state.final_state, state.char);
+                for (const state of validationResult.path) {
+                    applyStylesToNodes(nodes, state.initial_state, state.next_state);
+                    applyStylesToEdges(edges, state.initial_state, state.next_state, state.edge_label);
 
                     await new Promise((resolve) => {
                         setTimeout(resolve, getValidationSpeed());
@@ -35,7 +35,7 @@ const turingGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
                 }
             };
 
-            applyStylesWithDelay().then(() => speak(t(validationResult.result ? 'accept' : 'reject')));
+            applyStylesWithDelay().then(() => speak(t(validationResult.is_valid ? 'accept' : 'reject')));
         }
     }, [validationResult]);
 

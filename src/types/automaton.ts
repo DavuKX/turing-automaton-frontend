@@ -1,15 +1,21 @@
-type TransitionTuring = {
-    [char: string]: string;
+type Transition = {
+    read: string;
+    write: string;
+    move: string;
+    to: string;
 };
 
-export type turingMachine = {
+type Transitions = {
+    [key: string]: Transition[];
+};
+
+export type TuringMachine = {
     states: string[];
     alphabet: string[];
-    transitions: {
-        [char: string]: TransitionTuring;
-    };
+    transitions: Transitions;
     initialState: string;
     acceptanceStates: string[];
 };
+
 
 export type AutomatonTypes = 'turing';

@@ -1,11 +1,18 @@
 export type StateType = {
     initial_state: string;
-    final_state: string;
-    char: string;
+    next_state: string;
+    tape: string;
+    current_symbol_index: number;
+    symbol: string;
+    edge_label: string;
 };
 
 export type validationResultType = {
-    result: boolean;
+    id: number;
+    uuid: string;
     word: string;
-    states: StateType[];
+    result_word: string;
+    is_valid: boolean;
+    path: StateType[];
+    created_at: string;
 };

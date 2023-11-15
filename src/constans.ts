@@ -1,4 +1,4 @@
-import { turingMachine } from "@/types/automaton";
+import {TuringMachine} from "@/types/automaton";
 
 export const turingMachineGraphData = {
     nodes: [
@@ -29,13 +29,19 @@ export const turingMachineGraphData = {
     ]
 }
 
-export const machineTuring: turingMachine = {
+export const turingMachineData: TuringMachine = {
     states: ['start', 'q1', 'q2', 'q3'],
     alphabet: ['a', 'b'],
     transitions: {
-        q1: { a: 'q1', b: 'q1', λ: 'q1' },
-        q2: { a: 'q3', b: 'q2', λ: 'q2' },
-        q3: { a: 'q3', b: 'q3', λ: 'q3' },
+        q1: [
+            {read: 'a', write: 'a', move: 'R', to: 'q1'},
+            {read: 'b', write: 'a', move: 'R', to: 'q1'},
+            {read: '', write: '', move: 'L', to: 'q2'},
+        ],
+        q2: [
+            {read: 'a', write: 'a', move: 'L', to: 'q2'},
+            {read: '', write: '', move: 'R', to: 'q3'},
+        ],
     },
     initialState: 'q1',
     acceptanceStates: ['q3'],

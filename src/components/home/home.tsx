@@ -4,7 +4,7 @@ import AutomatonGraph from "@/components/turingGraph/turingGraph";
 import {turingMachineGraphData} from "@/constans";
 import ToolsSection from "@/components/toolsSection/toolsSection";
 import {ValidationHistoryComponent} from "@/components/validationHistoryComponent/validationHistoryComponent";
-import {validationResultType} from "@/types/validationResultType";
+import {StateType, validationResultType} from "@/types/validationResultType";
 import {AutomatonTypes} from "@/types/automaton";
 import {v4 as uuidv4} from 'uuid';
 import {useCookies} from 'next-client-cookies';
@@ -21,11 +21,16 @@ export default function Home(){
     const [inputWords, setInputWords] = useState('');
     const [graphData, setGraphData] = useState(turingMachineGraphData);
     const [validationResult, setValidationResult] = useState<validationResultType>({
-        result: false,
-        word: ''
+        id: 0,
+        uuid: '',
+        word: '',
+        result_word: '',
+        is_valid: false,
+        path: [] as StateType[],
+        created_at: '',
     } as validationResultType);
     const [automatonSpeed, setAutomatonSpeed] = useState<number[] | number>(50)
-    const [validationHistory, setValidationHistory] = useState<ValidationEntry[]>([] as ValidationEntry[])
+    const [validationHistory, setValidationHistory] = useState<validationResultType[]>([] as validationResultType[])
     const cookies = useCookies();
     useEffect(() => {
         if (!cookies.get('uuid')) {
@@ -53,13 +58,14 @@ export default function Home(){
     const loadValidations = async () => {
         const urlParams = new URLSearchParams([['uuid', cookies.get('uuid') as string]]);
 
-        const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/api/validations?' + urlParams.toString();
+        const url = process.env.NEXT_PUBLIC_BACKEND_URL + '/api/validated-words?' + urlParams.toString();
         const validations = await fetch(url, {
             method: 'GET',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then((res) => res.json() as Promise<ValidationEntry[]>);
+        }).then((res) => res.json() as Promise<validationResultType[]>);
 
         setValidationHistory(validations)
     }
@@ -94,9 +100,6 @@ export default function Home(){
                                 onAutomatonSpeedChanged={setAutomatonSpeed}
                             />
                         </Grid>
-                        {/* <Grid item xs={12}>
-                            <Tape tape={tape} /> 
-                        </Grid> */}
                     </Grid>
                 </Paper>
             </Grid>
