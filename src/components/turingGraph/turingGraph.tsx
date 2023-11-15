@@ -65,7 +65,7 @@ const turingGraph: React.FC<turingGraphProps> = ({graphData, validationResult, t
         edges.forEach((edge: any) => {
             if (
                 (edge.data().source === initialState && edge.data().target === finalState
-                    && (char === edge.data().label.toLowerCase())
+                    && (char.toLowerCase() === edge.data().label.toLowerCase())
                 )
             ) {
                 edge.style({

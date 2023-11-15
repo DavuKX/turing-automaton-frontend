@@ -22,7 +22,6 @@ const ValidateSection: React.FC<ValidateSectionProps> = ({inputString, onFinishe
         if (inputString && inputString.length > 0) {
             setValidInputMessageVisible(false);
             const validationResult = await validateWord(inputString);
-            console.log(validationResult)
             onFinishedValidation(validationResult);
         } else {
             setValidInputMessageVisible(true);
